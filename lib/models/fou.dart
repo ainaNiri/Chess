@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:chess/models/chess_type.dart';
 
 class Fou extends ChessPiece{
@@ -5,9 +7,17 @@ class Fou extends ChessPiece{
 
   @override
   void move(int x, int y, List<List<ChessPiece>> chess){
-    moveChess(10 , x, y, 1, 1, chess);
-    moveChess(10 , x, y, 1, -1, chess);
-    moveChess(10 , x, y, -1, 1, chess);
-    moveChess(10 , x, y, -1, -1, chess);
+    moveChess(x, y, 1, 1, chess);
+    moveChess(x, y, 1, -1, chess);
+    moveChess(x, y, -1, 1, chess);
+    moveChess(x, y, -1, -1, chess);
+  }
+
+  @override
+  void test(int x, int y, List<List<ChessPiece>> chess){
+    if(testChess(10 , x, y, 1, 1, chess)) return;
+    else if(testChess(10 , x, y, 1, -1, chess)) return;
+    else if(testChess(10 , x, y, -1, 1, chess)) return;
+    else if(testChess(10 , x, y, -1, -1, chess)) return;
   }
 }

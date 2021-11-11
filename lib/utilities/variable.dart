@@ -18,6 +18,8 @@ List<List<ChessPiece>> chessPiece = [
   [Tour(Player.p2, 0), Cavalier(Player.p2, 1), Fou(Player.p2, 0), Reine(Player.p2, 1), Roi(Player.p2, 0), Fou(Player.p2, 1), Cavalier(Player.p2, 0), Tour(Player.p2, 1)],
 ];
 
+List<List<int>> chessTemp = List.generate(chessPiece.length, (i) => List.generate(chessPiece.length, (j) => chessPiece[i][j].type));
+
 List<List<int>> caseType = [
   [1, 0, 1, 0, 1, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 0, 1],
@@ -32,3 +34,9 @@ List<List<int>> caseType = [
 List<int> oldCaseSelected = [-1, -1];
 List<int> newCaseSelected = [-1, -1];
 Player player = Player.p1;
+bool isChess = false;
+List<List<int>> chessMate = [];
+List<List<int>> pieceChess = [];
+List<List<int>> piece = [];
+bool isChessMate = true;
+bool isForTest = false;

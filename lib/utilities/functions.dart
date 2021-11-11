@@ -10,12 +10,13 @@ void transform(List<List<ChessPiece>> chess){
 }
 
 void onChessTapped( int i, int j, List<List<ChessPiece>> chess){
-  if(chessPiece[i][j].type != 4){
-    transform(chessPiece);
-    chessPiece[i][j].move(i, j, chessPiece);
-    chessPiece[i][j].type = 4;
+  if(chess[i][j].type != 4){
+    transform(chess);
+    chess[i][j].move(i, j, chess);
+    chess[i][j].type = 4;
+
   }
   else{
-    transform(chessPiece);
+    transform(chess);
   }
 }
