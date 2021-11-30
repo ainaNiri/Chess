@@ -17,50 +17,50 @@ class Pion extends ChessPiece{
       if(chess[x][y].player == Player.p1){
         if(x + 1 < chess.length && y - 1 >= 0){
           if(x + 1 == chessMate[0][0] && y - 1 == chessMate[0][1]){
-            chess[x + 1][y - 1].type = 3;
+            chess[x + 1][y - 1].type = 2;
           }
         }
         if(x + 1 < chess.length && y + 1 < chess.length){
           if(x + 1 == chessMate[0][0] && y + 1 == chessMate[0][1]){       
-            chess[x + 1][y + 1].type = 3;
+            chess[x + 1][y + 1].type = 2;
           }
         }
         if(x + 1 < chess.length && hasMoved!){
-          if(chessTemp[x + 1][y] == 2){       
-            chess[x + 1][y].type = 2;
+          if(chessTemp[x + 1][y] == 1){       
+            chess[x + 1][y].type = 1;
           }
         }
         else{
-          if(chessTemp[x + 1][y] == 2){       
-            chess[x + 1][y].type = 2;
+          if(chessTemp[x + 1][y] == 1){       
+            chess[x + 1][y].type = 1;
           }
-          if(chessTemp[x + 2][y] == 2){       
-            chess[x + 2][y].type = 2;
+          if(chessTemp[x + 2][y] == 1){       
+            chess[x + 2][y].type = 1;
           }
         }
       }
       else if(chess[x][y].player == Player.p2){
         if(x - 1 >= 0 && y + 1 < chess.length){
           if(x - 1 == chessMate[0][0] && y + 1 == chessMate[0][1]){
-            chess[x - 1][y + 1].type = 3;
+            chess[x - 1][y + 1].type = 2;
           }
         }
         if(x - 1 >= 0 && y - 1 >= 0){
           if(x - 1 == chessMate[0][0] && y - 1 == chessMate[0][1]){       
-            chess[x - 1][y - 1].type = 3;
+            chess[x - 1][y - 1].type = 2;
           }
         }
         if(x - 1 >= 0 && hasMoved!){
-          if(chessTemp[x - 1][y] == 2){
-            chess[x - 1][y].type = 2;
+          if(chessTemp[x - 1][y] == 1){
+            chess[x - 1][y].type = 1;
           }
         }
         else{
-          if(chessTemp[x - 1][y] == 2){
-            chess[x - 1][y].type = 2;
+          if(chessTemp[x - 1][y] == 1){
+            chess[x - 1][y].type = 1;
           }
-          if(chessTemp[x - 2][y] == 2){
-            chess[x - 2][y].type = 2;
+          if(chessTemp[x - 2][y] == 1){
+            chess[x - 2][y].type = 1;
           }
         }
       }
@@ -72,13 +72,13 @@ class Pion extends ChessPiece{
             if(chess[x][y].player == Player.p1){
               if(x + 1 < chess.length && y - 1 >= 0){
                 if(x + 1 == pieceChess[m][0] && y - 1 == pieceChess[m][1]){
-                  chess[x + 1][y - 1].type = 3;
+                  chess[x + 1][y - 1].type = 2;
                   return;
                 }
               }
               if(x + 1 < chess.length && y + 1 < chess.length){
                 if(x + 1 == pieceChess[m][0] && y + 1 == pieceChess[m][1]){       
-                  chess[x + 1][y + 1].type = 3;
+                  chess[x + 1][y + 1].type = 2;
                   return;
                 }
               }
@@ -86,13 +86,13 @@ class Pion extends ChessPiece{
             else if(chess[x][y].player == Player.p2){
               if(x - 1 >= 0 && y + 1 < chess.length){
                 if(x - 1 == pieceChess[m][0] && y + 1 == pieceChess[m][1]){
-                  chess[x - 1][y + 1].type = 3;
+                  chess[x - 1][y + 1].type = 2;
                   return;
                 }
               }
               if(x - 1 >= 0 && y - 1 >= 0){
                 if(x - 1 == pieceChess[m][0] && y - 1 == pieceChess[m][1]){       
-                  chess[x - 1][y - 1].type = 3;
+                  chess[x - 1][y - 1].type = 2;
                   return;
                 }
               }
@@ -104,50 +104,50 @@ class Pion extends ChessPiece{
       if(chess[x][y].player == Player.p1){
         if(x + 1 < chess.length && y - 1 >= 0){
           if(chess[x + 1][y - 1].player == Player.p2){
-            chess[x + 1][y - 1].type = 3;
+            chess[x + 1][y - 1].type = 2;
           }
         }
         if(x + 1 < chess.length && y + 1 < chess.length){
           if(chess[x + 1][y + 1].player == Player.p2){       
-            chess[x + 1][y + 1].type = 3;
+            chess[x + 1][y + 1].type = 2;
           }
         }
         if(x + 1 < chess.length && hasMoved!){
           if(chess[x + 1][y].player == Player.none){
-            chess[x + 1][y].type = 2;
+            chess[x + 1][y].type = 1;
           }
         }
         else{
           if(chess[x + 1][y].player == Player.none){
-            chess[x + 1][y].type = 2;
+            chess[x + 1][y].type = 1;
           }
           if(chess[x + 2][y].player == Player.none){
-            chess[x + 2][y].type = 2;
+            chess[x + 2][y].type = 1;
           }
         }
       }
       else{
         if(x - 1 >= 0 && y + 1 < chess.length){
           if(chess[x - 1][y + 1].player == Player.p1){
-            chess[x - 1][y + 1].type = 3;
+            chess[x - 1][y + 1].type = 2;
           }
         }
         if(x - 1 >= 0 && y - 1 >= 0){
           if(chess[x - 1][y - 1].player == Player.p1){
-            chess[x - 1][y - 1].type = 3;
+            chess[x - 1][y - 1].type = 2;
           }
         }
         if(x - 1 >= 0 && hasMoved!){
           if(chess[x - 1][y].player == Player.none){
-            chess[x - 1][y].type = 2;
+            chess[x - 1][y].type = 1;
           }
         }
         else{
           if(chess[x - 1][y].player == Player.none){
-            chess[x - 1][y].type = 2;
+            chess[x - 1][y].type = 1;
           }
           if(chess[x - 2][y].player == Player.none){
-            chess[x - 2][y].type = 2;
+            chess[x - 2][y].type = 1;
           }
         }
       }

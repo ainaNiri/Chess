@@ -33,10 +33,10 @@ class _ChessState extends State<Chess> {
               children: List.generate(8, (i) => Row(
                 children: List.generate(8, (j) => 
                 (chessPiece[i][j].player == Player.p1 || chessPiece[i][j].player == Player.p2 || 
-                  chessPiece[i][j].type == 2)?
+                  chessPiece[i][j].type == 1)?
                   GestureDetector(
                     onTap: (){
-                      if(chessPiece[i][j].type != 3 && chessPiece[i][j].player == player){
+                      if(chessPiece[i][j].type != 2 && chessPiece[i][j].player == player){
                         onChessTapped(i, j, chessPiece);
                         oldCaseSelected[0] = i;
                         oldCaseSelected[1] = j;
@@ -44,8 +44,8 @@ class _ChessState extends State<Chess> {
                           
                         });
                       }
-                      else if(chessPiece[i][j].type == 3 || chessPiece[i][j].type == 2){
-                        chessPiece[i][j] = Blank(4);
+                      else if(chessPiece[i][j].type == 2 || chessPiece[i][j].type == 1){
+                        chessPiece[i][j] = Blank(3);
                         newCaseSelected = [i, j];
                         isChess = false;
                         onChessTapped(i, j, chessPiece);
@@ -63,28 +63,27 @@ class _ChessState extends State<Chess> {
                               }
                             }
                           }
-                          // isForTest = true;
-                          // for(int m = 0; m < chessPiece.length; m++){
-                          //   for(int n = 0; n < chessPiece.length; n++){
-                          //     if(player == Player.p1 ? chessPiece[m][n].player == Player.p1 : chessPiece[m][n].player == Player.p2
-                          //       && chessPiece[m][n].runtimeType == Roi){
-                          //       chessPiece[m][n].move(m, n, chessPiece);
-                          //     }
-                          //   }
-                          // }
-                          // if(isChessMate){
-                          //   showDialog(
-                          //     context: context, 
-                          //     builder: (context){
-                          //       return AlertDialog(
-                          //         title: const Text("Victory"),
-                          //         content: Text(player == Player.p1 ? "Player 2 win" : "Player 1 win"),
-                          //       );
-                          //     }
-                          //   );
-                          // }
-                          // isForTest = false;
-                          chessPiece[i][j].type = caseType[i][j];
+                          isForTest = true;
+                          for(int m = 0; m < chessPiece.length; m++){
+                            for(int n = 0; n < chessPiece.length; n++){
+                              if(chessPiece[m][n].player == player && chessPiece[m][n].runtimeType == Roi){
+                                chessPiece[m][n].move(m, n, chessPiece);
+                              }
+                            }
+                          }
+                          if(isChess && isChessMate){
+                            showDialog(
+                              context: context, 
+                              builder: (context){
+                                return AlertDialog(
+                                  title: const Text("Victory"),
+                                  content: Text(player == Player.p1 ? "Player 2 win" : "Player 1 win"),
+                                );
+                              }
+                            );
+                          }
+                          isForTest = false;
+                          chessPiece[i][j].type = 0;
                           setState(() {
                             
                           });
@@ -99,11 +98,12 @@ class _ChessState extends State<Chess> {
                       height: 44,
                       child: Stack(
                         children: [
-                          if(chessPiece[i][j].type == 2)
-                            Alias(caseColor: caseType[i][j])
+                          if(chessPiece[i][j].type == 1)
+                            Alias(caseColor: i + j)
                           else
                             ChessCase(
-                              caseType: chessPiece[i][j].type == 5 ? caseType[i][j] : chessPiece[i][j].type
+                              caseColor: i + j,
+                              caseType: chessPiece[i][j].type
                             ),
                           SizedBox(
                             width: 44,
@@ -117,7 +117,8 @@ class _ChessState extends State<Chess> {
                     ),
                   ) : 
                   ChessCase(
-                    caseType: caseType[i][j],
+                    caseColor: i + j,
+                    caseType: 0,
                   ),
                 ),
               ))

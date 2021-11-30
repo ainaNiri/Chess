@@ -32,11 +32,11 @@ void moveChess(int x, int y, int dx, int dy, List<List<ChessPiece>> chess){
     }
     while( i < 8){
       if(x + (dx*i) >=0 &&  y + (dy*i) >= 0 && x + (dx*i) < chess.length &&  y + (dy*i) < chess.length){
-        if(chessTemp[x + (dx*i)][y + (dy*i)] == 2){
-          chess[x + (dx*i)][y + (dy*i)].type = 2;
+        if(chessTemp[x + (dx*i)][y + (dy*i)] == 1){
+          chess[x + (dx*i)][y + (dy*i)].type = 1;
         }
         else if(x + (dx*i) == chessMate[0][0] && y + (dy*i) == chessMate[0][1]){
-          chess[x + (dx*i)][y + (dy*i)].type = 3;
+          chess[x + (dx*i)][y + (dy*i)].type = 2;
           return;
         }
         if(chess[x + (dx*i)][y + (dy*i)].player != Player.none){
@@ -55,11 +55,11 @@ void moveChess(int x, int y, int dx, int dy, List<List<ChessPiece>> chess){
         for(int n = 0; n < pieceChess.length; n++){
           while( i < 10){
             if(x + (dx*i) >=0 &&  y + (dy*i) >= 0 && x + (dx*i) < chess.length &&  y + (dy*i) < chess.length){
-              if(chessTemp[x + (dx*i)][y + (dy*i)] == 2){
-                chess[x + (dx*i)][y + (dy*i)].type = 2;
+              if(chessTemp[x + (dx*i)][y + (dy*i)] == 1){
+                chess[x + (dx*i)][y + (dy*i)].type = 1;
               }
               else if(x + (dx*i) == pieceChess[n][0] && y + (dy*i) == pieceChess[n][1]){
-                chess[x + (dx*i)][y + (dy*i)].type = 3;
+                chess[x + (dx*i)][y + (dy*i)].type = 2;
                 return;
               }
               else{
@@ -78,10 +78,10 @@ void moveChess(int x, int y, int dx, int dy, List<List<ChessPiece>> chess){
     while( i < 8){
       if(x + (dx*i) >=0 &&  y + (dy*i) >= 0 && x + (dx*i) < chess.length &&  y + (dy*i) < chess.length){
         if(chess[x + (dx*i)][y + (dy*i)].player == Player.none){
-          chess[x + (dx*i)][y + (dy*i)].type = 2;
+          chess[x + (dx*i)][y + (dy*i)].type = 1;
         }
         else if(chess[x + (dx*i)][y + (dy*i)].player != chess[x][y].player){
-          chess[x + (dx*i)][y + (dy*i)].type = 3;
+          chess[x + (dx*i)][y + (dy*i)].type = 2;
           break;
         }
         else{
@@ -104,7 +104,7 @@ bool testChess(int scoop, int x, int y, int dx, int dy, List<List<ChessPiece>> c
   while( i < scoop){
     if(x + (dx*i) >= 0 &&  y + (dy*i) >= 0 && x + (dx*i) < chess.length &&  y + (dy*i) < chess.length){
       if(chess[x + (dx*i)][y + (dy*i)].player == Player.none){
-        if(number < 1) chessTemp[x + (dx*i)][y + (dy*i)] = 2;
+        if(number < 1) chessTemp[x + (dx*i)][y + (dy*i)] = 1;
         i = i + 1;
         continue;
       }

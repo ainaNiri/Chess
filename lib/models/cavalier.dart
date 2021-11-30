@@ -33,11 +33,11 @@ class Cavalier extends ChessPiece{
 void moveCavalier(int x, int y, int dx, int dy, List<List<ChessPiece>> chess){
   if(isChess){
     if(x + dx >= 0 && y + dy >= 0 && x + dx < chess.length && y + dy < chess.length){
-      if(chessTemp[x + dx][y + dy] == 2){
-        chess[x + dx][y + dy].type = 2;
+      if(chessTemp[x + dx][y + dy] == 1){
+        chess[x + dx][y + dy].type = 1;
       }
       else if(x + dx == chessMate[0][0] && y + dy == chessMate[0][1]){
-        chess[x + dx][y + dy].type = 3;
+        chess[x + dx][y + dy].type = 2;
       }
     }
   }
@@ -50,10 +50,10 @@ void moveCavalier(int x, int y, int dx, int dy, List<List<ChessPiece>> chess){
       
     if(x + dx >= 0 && y + dy >= 0 && x + dx < chess.length && y + dy < chess.length){
       if(chess[x + dx][y + dy].player == Player.none){
-        chess[x + dx][y + dy].type = 2;
+        chess[x + dx][y + dy].type = 1;
       }
       else if(chess[x + dx][y + dy].player != chess[x][y].player){
-        chess[x + dx][y + dy].type = 3;
+        chess[x + dx][y + dy].type = 2;
       }
     }
   }

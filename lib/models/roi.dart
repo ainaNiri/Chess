@@ -23,7 +23,7 @@ class Roi extends ChessPiece{
       ChessPiece temp = chess[x][y];
       ChessPiece temp1 = chess[x + (dx)][y + (dy)];
       if(chess[x + (dx)][y + (dy)].player == Player.none){
-        chess[x][y] = Blank(chess[x][y].type);
+        chess[x][y] = Blank(0);
         chess[x + (dx)][y + (dy)] = temp;
         for(int m = 0; m < chess.length; m++){
           for(int n = 0; n < chess.length; n++){
@@ -42,9 +42,12 @@ class Roi extends ChessPiece{
         }
         if(isForTest){
           isChessMate = false;
+          chess[x + (dx)][y + (dy)] = temp1;
+          chess[x][y] = temp;
+          isChess = isChessTemp;
         }
         else{
-          chess[x + (dx)][y + (dy)] = Blank(2);
+          chess[x + (dx)][y + (dy)] = Blank(1);
           chess[x][y] = temp;
           isChess = isChessTemp;
         }
@@ -69,14 +72,16 @@ class Roi extends ChessPiece{
         }
         if(isForTest){
           isChessMate = false;
+          chess[x + (dx)][y + (dy)] = temp1;
+          chess[x][y] = temp;
+          isChess = isChessTemp;
         }
         else{
           chess[x][y] = temp;
           isChess = isChessTemp;
           chess[x + (dx)][y + (dy)] = temp1;
-          chess[x + (dx)][y + (dy)].type = 3;
+          chess[x + (dx)][y + (dy)].type = 2;
         }
-
       }
     }
   }

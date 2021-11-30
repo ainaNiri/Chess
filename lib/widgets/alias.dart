@@ -13,7 +13,7 @@ class Alias extends StatelessWidget {
         Container(
           width: 44,
           height: 44,
-          color: caseColor == 0 ? Colors.brown[300] : Colors.orange[100],
+          color: caseColor%2 == 0 ? Colors.brown[300] : Colors.orange[100],
         ),
         SizedBox(
           width: 44,
